@@ -6,26 +6,16 @@ Class {
 }
 
 { #category : 'accessing' }
-West >> move: aPoint [ 
+West class >> move: aPoint [ 
 	^aPoint x-1 @ aPoint y
 ]
 
 { #category : 'comparing' }
-West >> rotateLeft [
-	^ South new.
+West class >> rotateLeft [
+	^ South.
 ]
 
 { #category : 'comparing' }
-West >> rotateRight [
-	^North new.
-]
-
-{ #category : 'tests' }
-West >> testRotateRight [
-
-	| r |
-	r := Roover new.
-	r turnRight.
-
-	self assert: r direction equals: East new
+West class >> rotateRight [
+	^North.
 ]

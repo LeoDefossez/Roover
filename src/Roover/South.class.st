@@ -6,16 +6,16 @@ Class {
 }
 
 { #category : 'accessing' }
-South >> move: aPoint [ 
+South class >> move: aPoint [ 
 	^aPoint x @ (aPoint y-1)
 ]
 
 { #category : 'comparing' }
-South >> rotateLeft [
-	^West new
+South class >> rotateLeft [
+	^West 
 ]
 
 { #category : 'comparing' }
-South >> rotateRight [
-	^West new.
+South class >> rotateRight [
+	^West .
 ]

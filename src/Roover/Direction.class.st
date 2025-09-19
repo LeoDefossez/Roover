@@ -7,14 +7,23 @@ Class {
 
 { #category : 'instance creation' }
 Direction class >> fromChar: aString [ 
-	aString = 'E' ifTrue: [ ^ East new ].
-	aString = 'N' ifTrue: [ ^ North new ].
-	aString = 'W' ifTrue: [ ^ West new ].
-	aString = 'S' ifTrue: [ ^ South new ].
+	aString = 'E' ifTrue: [ ^ East  ].
+	aString = 'N' ifTrue: [ ^ North  ].
+	aString = 'W' ifTrue: [ ^ West  ].
+	aString = 'S' ifTrue: [ ^ South  ].
 ]
 
-{ #category : 'comparing' }
-Direction >> = arg [
-		
-	^self class name = arg class name 
+{ #category : 'accessing' }
+Direction class >> move: aPoint [
+	self subclassResponsibility.
+]
+
+{ #category : 'accessing' }
+Direction class >> rotateLeft [ 
+	self subclassResponsibility.
+]
+
+{ #category : 'accessing' }
+Direction class >> rotateRight [
+	self subclassResponsibility.
 ]

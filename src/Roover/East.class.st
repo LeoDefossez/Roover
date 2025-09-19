@@ -6,16 +6,16 @@ Class {
 }
 
 { #category : 'accessing' }
-East >> move: aPoint [ 
+East class >> move: aPoint [ 
 	^ aPoint x+1 @ aPoint y
 ]
 
 { #category : 'comparing' }
-East >> rotateLeft [
-	^North new.
+East class >> rotateLeft [
+	^North.
 ]
 
 { #category : 'as yet unclassified' }
-East >> rotateRight [
-	^ South new.
+East class >> rotateRight [
+	^ South.
 ]

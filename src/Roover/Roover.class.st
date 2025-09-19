@@ -35,7 +35,7 @@ Roover >> gridSize: aPoint [
 Roover >> initialize [
 
 	super initialize.
-	direction := North new.
+	direction := North .
 	x := 0.
 	y := 0
 ]

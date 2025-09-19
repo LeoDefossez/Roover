@@ -10,7 +10,7 @@ RooverTest >> testDefaultRooverDirectionIsNorth [
 
 	| r |
 	r := Roover new.
-	self assert: r direction equals: North new
+	self assert: r direction equals: North 
 ]
 
 { #category : 'tests' }
@@ -33,7 +33,7 @@ RMRM'.
 
 	self assert: r x equals: 2.
 	self assert: r y equals: 1.
-	self assert: r direction equals: South new
+	self assert: r direction equals: South 
 ]
 
 { #category : 'tests' }
@@ -56,7 +56,7 @@ RooverTest >> testInitialize [
 	
 	self assert: r x equals: 1.
 	self assert: r x equals: 1.
-	self assert: r direction equals: East new.
+	self assert: r direction equals: East.
 	
 ]
 
@@ -69,7 +69,7 @@ RooverTest >> testInterpretDirection [
 
 	self assert: r x equals: 2.
 	self assert: r y equals: 2.
-	self assert: r direction equals: East new
+	self assert: r direction equals: East 
 ]
 
 { #category : 'tests' }
@@ -88,7 +88,7 @@ RooverTest >> testRotateLeft [
  r := Roover new.
 r turnLeft.
 
-self assert: r direction equals: West new.
+self assert: r direction equals: West.
 
 ]
 
@@ -99,7 +99,7 @@ RooverTest >> testRotateRight [
 	r := Roover new.
 	r turnRight.
 
-	self assert: r direction equals: East new
+	self assert: r direction equals: East 
 ]
 
 { #category : 'tests' }
