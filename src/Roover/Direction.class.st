@@ -1,8 +1,9 @@
 Class {
 	#name : 'Direction',
 	#superclass : 'Object',
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-classes',
+	#package : 'Roover',
+	#tag : 'classes'
 }
 
 { #category : 'instance creation' }

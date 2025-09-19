@@ -7,8 +7,9 @@ Class {
 		'direction',
 		'gridSize'
 	],
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-classes',
+	#package : 'Roover',
+	#tag : 'classes'
 }
 
 { #category : 'accessing' }
@@ -62,7 +63,7 @@ Roover >> interpretDirection: aString [
 				ifFalse: [
 						c = $L
 							ifTrue: [ self turnLeft ]
-							ifFalse: [ self move ] ] ]
+							ifFalse: [ self testMove ] ] ]
 ]
 
 { #category : 'accessing' }
@@ -87,7 +88,7 @@ Roover >> interpretInit: aString [
 ]
 
 { #category : 'accessing' }
-Roover >> move [
+Roover >> testMove [
 	| p |
 	p:= self direction move: x@y.
 	x:= p x.
