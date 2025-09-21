@@ -6,7 +6,7 @@ Class {
 	#tag : 'roover'
 }
 
-{ #category : 'tests' }
+{ #category : 'initialization' }
 RooverTest >> testDefaultRooverDirectionIsNorth [
 
 	| r |
@@ -14,13 +14,13 @@ RooverTest >> testDefaultRooverDirectionIsNorth [
 	self assert: r direction equals: North 
 ]
 
-{ #category : 'tests' }
+{ #category : 'initialization' }
 RooverTest >> testDefaultRooverPositionIsAtZeroZero [
 
 	self assert: Roover new position equals: 0 @ 0
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
 RooverTest >> testInterpretDirection [
 
 	| r |
@@ -31,7 +31,7 @@ RooverTest >> testInterpretDirection [
 	self assert: r direction equals: East 
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
 RooverTest >> testInterpretDirectionWithMoreSpaces [
 
 	| r |
@@ -41,7 +41,16 @@ RooverTest >> testInterpretDirectionWithMoreSpaces [
 	self assert: r direction equals: East 
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
+RooverTest >> testInterpretDirectionWithNoise [
+	| r |
+	r := Roover new.
+	r interpretDirection: ' MMRV MM AD	 BENAD '.
+	self assert: r position equals: 2@2.
+	self assert: r direction equals: East 
+]
+
+{ #category : 'interpreting' }
 RooverTest >> testInterpretFullCommand [
 
 	| r |
@@ -54,7 +63,7 @@ RMRM'.
 	self assert: r direction equals: South 
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
 RooverTest >> testInterpretGridSize [
 
 	| r |
@@ -63,7 +72,7 @@ RooverTest >> testInterpretGridSize [
 	self assert: r gridSize equals: 6@6
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
 RooverTest >> testInterpretGridSizeWithMoreSpaces [
 
 	| r |
@@ -72,12 +81,45 @@ RooverTest >> testInterpretGridSizeWithMoreSpaces [
 	self assert: r gridSize equals: 6@6
 ]
 
-{ #category : 'tests' }
+{ #category : 'interpreting' }
+RooverTest >> testInterpretGridSizeWithMoreTab [
+
+	| r |
+	r := Roover new.
+	r interpretGridSize: ' 5 	 5 '.
+	self assert: r gridSize equals: 6@6
+]
+
+{ #category : 'interpreting' }
 RooverTest >> testInterpretInitialPosition [ 
 		
 	| r |
 	r := Roover new.
 	r interpretInitialPosition: '1 2 E'.
+	
+	self assert: r position equals: 1@2.
+	self assert: r direction equals: East.
+	
+]
+
+{ #category : 'interpreting' }
+RooverTest >> testInterpretInitialPositionWithMoreSpaces [
+		
+	| r |
+	r := Roover new.
+	r interpretInitialPosition: ' 1  2  E '.
+	
+	self assert: r position equals: 1@2.
+	self assert: r direction equals: East.
+	
+]
+
+{ #category : 'interpreting' }
+RooverTest >> testInterpretInitialPositionWithTab [
+		
+	| r |
+	r := Roover new.
+	r interpretInitialPosition: ' 1  2 	 E '.
 	
 	self assert: r position equals: 1@2.
 	self assert: r direction equals: East.
@@ -112,16 +154,4 @@ RooverTest >> testRotateRight [
 	r turnRight.
 
 	self assert: r direction equals: East 
-]
-
-{ #category : 'tests' }
-RooverTest >> testSplitInput [
-
-	| splits |
-	splits := ('5 5
-1 2 N
-LMLM' splitOn: Character cr).
-
-	self assert: splits size equals: 3.
-	self assert: splits first equals: '5 5'
 ]

@@ -68,7 +68,7 @@ Roover >> interpretFullCommand: aString [
 Roover >> interpretGridSize: aString [ 
 	| grid |
 	grid := aString splitOn: Character space.
-	grid:= grid reject: #isEmpty .
+	grid:= grid reject: [:string | string asInteger isNil].
 	self gridSize: (grid first asInteger + 1) @
 	(grid second asInteger + 1).
 	
@@ -81,6 +81,7 @@ Roover >> interpretInitialPosition: aString [
 
 	| cmd |
 	cmd := aString splitOn: Character space.
+	cmd := cmd reject: [:string | string isEmpty or: [ string first = Character tab ]].
 	position := cmd first asInteger @ cmd second asInteger.
 	direction := Direction fromChar: cmd third
 ]
