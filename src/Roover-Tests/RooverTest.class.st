@@ -49,9 +49,16 @@ RooverTest >> testInterpretGridSize [
 
 	| r |
 	r := Roover new.
-	r interpretGridSize: '5 5
-1 2 N 
-LMLM'.
+	r interpretGridSize: '5 5'.
+	self assert: r gridSize equals: 6@6
+]
+
+{ #category : 'tests' }
+RooverTest >> testInterpretGridSizeWithMoreSpaces [
+
+	| r |
+	r := Roover new.
+	r interpretGridSize: ' 5  5 '.
 	self assert: r gridSize equals: 6@6
 ]
 

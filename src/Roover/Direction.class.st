@@ -10,12 +10,12 @@ Class {
 Direction class >> fromChar: aString [
 
 	| direction |
-	self halt.
 	direction := Dictionary new
 		          at: 'E' put: [ ^ East ];
 		          at: 'N' put: [ ^ North ];
 		          at: 'W' put: [ ^ West ];
-		          at: 'S' put: [ ^ South ].
+		          at: 'S' put: [ ^ South ];
+					yourself.
 	^ (direction at: aString) value
 ]
 

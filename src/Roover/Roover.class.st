@@ -68,6 +68,7 @@ Roover >> interpretFullCommand: aString [
 Roover >> interpretGridSize: aString [ 
 	| grid |
 	grid := aString splitOn: Character space.
+	grid:= grid reject: #isEmpty .
 	self gridSize: (grid first asInteger + 1) @
 	(grid second asInteger + 1).
 	
