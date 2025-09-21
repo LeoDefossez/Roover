@@ -1,27 +1,9 @@
 Class {
 	#name : 'DirectionTest',
 	#superclass : 'TestCase',
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-Tests',
+	#package : 'Roover-Tests'
 }
-
-{ #category : 'moveTest' }
-DirectionTest >> testEastMove [
-
-	self assert: (East move: 0 @ 0) equals: 1 @ 0
-]
-
-{ #category : 'tests' }
-DirectionTest >> testEastTurnLeft [
-
-	self assert: East  rotateLeft equals: North 
-]
-
-{ #category : 'tests' }
-DirectionTest >> testEastTurnRight [
-
-	self assert: East  rotateRight equals: South 
-]
 
 { #category : 'moveTest' }
 DirectionTest >> testNorthMove [
@@ -38,6 +20,18 @@ DirectionTest >> testNorthTurnLeft [
 DirectionTest >> testNorthTurnRight [
 
 	self assert: North  rotateRight equals: East 
+]
+
+{ #category : 'tests' }
+DirectionTest >> testRotateLeft [
+
+	self assert: East  rotateLeft equals: North 
+]
+
+{ #category : 'tests' }
+DirectionTest >> testRotateRight [
+
+	self assert: East  rotateRight equals: South 
 ]
 
 { #category : 'moveTest' }

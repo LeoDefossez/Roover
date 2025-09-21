@@ -1,8 +1,8 @@
 Class {
 	#name : 'RooverTest',
 	#superclass : 'TestCase',
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-Tests',
+	#package : 'Roover-Tests'
 }
 
 { #category : 'tests' }
