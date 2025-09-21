@@ -12,6 +12,11 @@ North class >> move: aPoint [
 	^ aPoint x @ (aPoint y + 1)
 ]
 
+{ #category : 'accessing' }
+North class >> opposite [
+	^ South
+]
+
 { #category : 'as yet unclassified' }
 North class >> rotateLeft [
 	^ West 

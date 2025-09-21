@@ -11,6 +11,11 @@ East class >> move: aPoint [
 	^ aPoint x+1 @ aPoint y
 ]
 
+{ #category : 'accessing' }
+East class >> opposite [
+	^ West
+]
+
 { #category : 'comparing' }
 East class >> rotateLeft [
 	^North.

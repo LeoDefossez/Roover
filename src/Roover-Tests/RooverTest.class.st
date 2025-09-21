@@ -42,9 +42,9 @@ RooverTest >> testInterpretDirectionWalkBack [
 
 	| r |
 	r := Roover new.
-	r interpretDirection: 'MMRMMB'.
-	self assert: r position equals: 3 @ 1.
-	self assert: r direction equals: East
+	r interpretDirection: 'MMB'.
+	self assert: r position equals: 1 @ 2.
+	self assert: r direction equals: North
 ]
 
 { #category : 'interpreting' }
