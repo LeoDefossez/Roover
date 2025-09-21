@@ -49,7 +49,7 @@ Roover >> interpretDirection: aString [
 		          at: $M put: [ self move ];
 		          yourself.
 
-	aString do: [ :car | (choice at: car) value ]
+	aString do: [ :car | choice at: car ifPresent: #value ]
 ]
 
 { #category : 'accessing' }

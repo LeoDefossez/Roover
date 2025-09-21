@@ -32,6 +32,16 @@ RooverTest >> testInterpretDirection [
 ]
 
 { #category : 'tests' }
+RooverTest >> testInterpretDirectionWithMoreSpaces [
+
+	| r |
+	r := Roover new.
+	r interpretDirection: ' MMR  MM   '.
+	self assert: r position equals: 2@2.
+	self assert: r direction equals: East 
+]
+
+{ #category : 'tests' }
 RooverTest >> testInterpretFullCommand [
 
 	| r |
