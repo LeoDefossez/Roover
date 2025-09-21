@@ -1,8 +1,9 @@
 Class {
 	#name : 'RooverTest',
 	#superclass : 'TestCase',
-	#category : 'Roover-Tests',
-	#package : 'Roover-Tests'
+	#category : 'Roover-Tests-roover',
+	#package : 'Roover-Tests',
+	#tag : 'roover'
 }
 
 { #category : 'tests' }
@@ -52,7 +53,7 @@ RooverTest >> testInitialize [
 		
 	| r |
 	r := Roover new.
-	r interpretInit: '1 2 E'.
+	r interpretIntialPosition: '1 2 E'.
 	
 	self assert: r x equals: 1.
 	self assert: r x equals: 1.

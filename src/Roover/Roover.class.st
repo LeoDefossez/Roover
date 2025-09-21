@@ -7,8 +7,9 @@ Class {
 		'direction',
 		'gridSize'
 	],
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-roover',
+	#package : 'Roover',
+	#tag : 'roover'
 }
 
 { #category : 'accessing' }
@@ -43,8 +44,7 @@ Roover >> initialize [
 { #category : 'accessing' }
 Roover >> interpretCommand: aString [ 
 	| input grid |
-	input := aString splitOn: Character cr.
-	grid := input first splitOn: Character space.
+	grid := aString splitOn: Character space.
 	self gridSize: (grid first asInteger + 1) @
 	(grid second asInteger + 1).
 	
@@ -73,12 +73,12 @@ Roover >> interpretFullCommand: aString [
 
 	self interpretCommand: temp first.
 
-	self interpretInit: temp second.
+	self interpretIntialPosition: temp second.
 	self interpretDirection: temp third
 ]
 
 { #category : 'accessing' }
-Roover >> interpretInit: aString [ 
+Roover >> interpretIntialPosition: aString [ 
 	| cmd |
 	cmd:=aString splitOn: Character space.
 	x:=cmd first asInteger.

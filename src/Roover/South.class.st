@@ -1,8 +1,9 @@
 Class {
 	#name : 'South',
 	#superclass : 'Direction',
-	#category : 'Roover',
-	#package : 'Roover'
+	#category : 'Roover-direction',
+	#package : 'Roover',
+	#tag : 'direction'
 }
 
 { #category : 'accessing' }
