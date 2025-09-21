@@ -7,11 +7,16 @@ Class {
 }
 
 { #category : 'instance creation' }
-Direction class >> fromChar: aString [ 
-	aString = 'E' ifTrue: [ ^ East  ].
-	aString = 'N' ifTrue: [ ^ North  ].
-	aString = 'W' ifTrue: [ ^ West  ].
-	aString = 'S' ifTrue: [ ^ South  ].
+Direction class >> fromChar: aString [
+
+	| direction |
+	self halt.
+	direction := Dictionary new
+		          at: 'E' put: [ ^ East ];
+		          at: 'N' put: [ ^ North ];
+		          at: 'W' put: [ ^ West ];
+		          at: 'S' put: [ ^ South ].
+	^ (direction at: aString) value
 ]
 
 { #category : 'accessing' }

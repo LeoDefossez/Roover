@@ -17,10 +17,7 @@ RooverTest >> testDefaultRooverDirectionIsNorth [
 { #category : 'tests' }
 RooverTest >> testDefaultRooverPositionIsAtZeroZero [
 
-	| r |
-	r := Roover new.
-	self assert: r x equals: 0.
-	self assert: r y equals: 0.
+	self assert: Roover new position equals: 0 @ 0
 ]
 
 { #category : 'tests' }
@@ -30,8 +27,7 @@ RooverTest >> testInterpretDirection [
 	r := Roover new.
 	r interpretDirection: 'MMRMM'.
 
-	self assert: r x equals: 2.
-	self assert: r y equals: 2.
+	self assert: r position equals: 2@2.
 	self assert: r direction equals: East 
 ]
 
@@ -44,8 +40,7 @@ RooverTest >> testInterpretFullCommand [
 1 2 N 
 RMRM'.
 
-	self assert: r x equals: 2.
-	self assert: r y equals: 1.
+	self assert: r position equals: 2@1.
 	self assert: r direction equals: South 
 ]
 
@@ -67,20 +62,19 @@ RooverTest >> testInterpretInitialPosition [
 	r := Roover new.
 	r interpretInitialPosition: '1 2 E'.
 	
-	self assert: r x equals: 1.
-	self assert: r x equals: 1.
+	self assert: r position equals: 1@2.
 	self assert: r direction equals: East.
 	
 ]
 
 { #category : 'tests' }
 RooverTest >> testMove [
-| r |
-r:= Roover new.
-r move.
-self assert: r x equals: 0
 
-
+	| r |
+	r := Roover new.
+	
+	r move.
+	self assert: r position equals: 0@1.
 ]
 
 { #category : 'tests' }

@@ -2,8 +2,7 @@ Class {
 	#name : 'Roover',
 	#superclass : 'Object',
 	#instVars : [
-		'x',
-		'y',
+		'position',
 		'direction',
 		'gridSize'
 	],
@@ -37,21 +36,20 @@ Roover >> initialize [
 
 	super initialize.
 	direction := North .
-	x := 0.
-	y := 0
+	position := 0@0
 ]
 
 { #category : 'accessing' }
 Roover >> interpretDirection: aString [
 
-	
-	aString do: [ :c |
-			c = $R
-				ifTrue: [ self turnRight ]
-				ifFalse: [
-						c = $L
-							ifTrue: [ self turnLeft ]
-							ifFalse: [ self move ] ] ]
+	| choice |
+	choice := Dictionary new
+		          at: $R put: [ self turnRight ];
+		          at: $L put: [ self turnLeft ];
+		          at: $M put: [ self move ];
+		          yourself.
+
+	aString do: [ :car | (choice at: car) value ]
 ]
 
 { #category : 'accessing' }
@@ -78,21 +76,23 @@ Roover >> interpretGridSize: aString [
 ]
 
 { #category : 'accessing' }
-Roover >> interpretInitialPosition: aString [ 
+Roover >> interpretInitialPosition: aString [
+
 	| cmd |
-	cmd:=aString splitOn: Character space.
-	x:=cmd first asInteger.
-	y:=cmd second asInteger.
-	direction:= Direction fromChar: cmd third 
+	cmd := aString splitOn: Character space.
+	position := cmd first asInteger @ cmd second asInteger.
+	direction := Direction fromChar: cmd third
 ]
 
 { #category : 'accessing' }
 Roover >> move [
-	| p |
-	p:= self direction move: x@y.
-	x:= p x.
-	y:= p y.
-	
+
+	position := self direction move: position
+]
+
+{ #category : 'accessing' }
+Roover >> position [
+	^ position
 ]
 
 { #category : 'as yet unclassified' }
@@ -103,15 +103,4 @@ Roover >> turnLeft [
 { #category : 'accessing' }
 Roover >> turnRight [
 	self direction: self direction rotateRight .
-]
-
-{ #category : 'accessing - structure variables' }
-Roover >> x [
-	^ x
-]
-
-{ #category : 'accessing - structure variables' }
-Roover >> y [ 
-
-	^ y
 ]
