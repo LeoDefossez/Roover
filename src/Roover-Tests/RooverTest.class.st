@@ -22,7 +22,7 @@ RooverTest >> testDefaultRooverGridsizeIsAt5time5 [
 
 { #category : 'initialization' }
 RooverTest >> testDefaultRooverHasEmptyHistory [
-	self assert: Roover new history equals: #()
+	self assert: Roover new history size equals: 0
 ]
 
 { #category : 'initialization' }
@@ -198,7 +198,7 @@ RooverTest >> testRooverMoveHistory [
 	| r |
 	r := Roover new.
 	r interpretDirection: 'M'.
-	self assert: r history equals: #(1@2)
+	self assertCollection: r history hasSameElements: {1@2}
 ]
 
 { #category : 'RooverAction' }

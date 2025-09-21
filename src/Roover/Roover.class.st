@@ -50,7 +50,7 @@ Roover >> initialize [
 	direction := North.
 	position := 1 @ 1.
 	gridSize := 5 @ 5.
-	history := #()
+	history := OrderedCollection new.
 	
 ]
 
@@ -106,7 +106,9 @@ Roover >> move [
 	tmp := self direction move: position.
 
 
-	(tmp isInsideRectangle: self area) ifTrue: [ self position: tmp ]
+	(tmp isInsideRectangle: self area) ifFalse: [ ^ self ].
+	position := tmp.
+	history add: position
 ]
 
 { #category : 'accessing' }
@@ -116,7 +118,9 @@ Roover >> moveBack [
 	tmp := self direction opposite move: position.
 
 
-	(tmp isInsideRectangle: self area) ifTrue: [ self position: tmp ]
+	(tmp isInsideRectangle: self area) ifFalse: [ ^ self ].
+	position := tmp.
+	history add: position
 ]
 
 { #category : 'accessing' }
