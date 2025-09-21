@@ -24,7 +24,19 @@ RooverTest >> testDefaultRooverPositionIsAtZeroZero [
 ]
 
 { #category : 'tests' }
-RooverTest >> testFullInterpret [
+RooverTest >> testInterpretDirection [
+
+	| r |
+	r := Roover new.
+	r interpretDirection: 'MMRMM'.
+
+	self assert: r x equals: 2.
+	self assert: r y equals: 2.
+	self assert: r direction equals: East 
+]
+
+{ #category : 'tests' }
+RooverTest >> testInterpretFullCommand [
 
 	| r |
 	r := Roover new.
@@ -38,39 +50,27 @@ RMRM'.
 ]
 
 { #category : 'tests' }
-RooverTest >> testGridSize [
+RooverTest >> testInterpretGridSize [
 
 	| r |
 	r := Roover new.
-	r interpretCommand: '5 5
+	r interpretGridSize: '5 5
 1 2 N 
 LMLM'.
 	self assert: r gridSize equals: 6@6
 ]
 
 { #category : 'tests' }
-RooverTest >> testInitialize [ 
+RooverTest >> testInterpretInitialPosition [ 
 		
 	| r |
 	r := Roover new.
-	r interpretIntialPosition: '1 2 E'.
+	r interpretInitialPosition: '1 2 E'.
 	
 	self assert: r x equals: 1.
 	self assert: r x equals: 1.
 	self assert: r direction equals: East.
 	
-]
-
-{ #category : 'tests' }
-RooverTest >> testInterpretDirection [
-
-	| r |
-	r := Roover new.
-	r interpretDirection: 'MMRMM'.
-
-	self assert: r x equals: 2.
-	self assert: r y equals: 2.
-	self assert: r direction equals: East 
 ]
 
 { #category : 'tests' }

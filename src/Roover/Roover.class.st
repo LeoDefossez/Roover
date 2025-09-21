@@ -18,8 +18,8 @@ Roover >> direction [
 ]
 
 { #category : 'accessing' }
-Roover >> direction: aWest [ 
-	direction := aWest
+Roover >> direction: aDirection [ 
+	direction := aDirection 
 ]
 
 { #category : 'accessing' }
@@ -42,17 +42,6 @@ Roover >> initialize [
 ]
 
 { #category : 'accessing' }
-Roover >> interpretCommand: aString [ 
-	| input grid |
-	grid := aString splitOn: Character space.
-	self gridSize: (grid first asInteger + 1) @
-	(grid second asInteger + 1).
-	
-		
-	
-]
-
-{ #category : 'accessing' }
 Roover >> interpretDirection: aString [
 
 	
@@ -71,14 +60,25 @@ Roover >> interpretFullCommand: aString [
 	| temp |
 	temp := aString splitOn: Character cr.
 
-	self interpretCommand: temp first.
+	self interpretGridSize: temp first.
 
-	self interpretIntialPosition: temp second.
+	self interpretInitialPosition: temp second.
 	self interpretDirection: temp third
 ]
 
 { #category : 'accessing' }
-Roover >> interpretIntialPosition: aString [ 
+Roover >> interpretGridSize: aString [ 
+	| grid |
+	grid := aString splitOn: Character space.
+	self gridSize: (grid first asInteger + 1) @
+	(grid second asInteger + 1).
+	
+		
+	
+]
+
+{ #category : 'accessing' }
+Roover >> interpretInitialPosition: aString [ 
 	| cmd |
 	cmd:=aString splitOn: Character space.
 	x:=cmd first asInteger.
