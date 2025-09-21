@@ -21,6 +21,11 @@ RooverTest >> testDefaultRooverGridsizeIsAt5time5 [
 ]
 
 { #category : 'initialization' }
+RooverTest >> testDefaultRooverHasEmptyHistory [
+	self assert: Roover new history equals: #()
+]
+
+{ #category : 'initialization' }
 RooverTest >> testDefaultRooverPositionIsAtOneOne [
 
 	self assert: Roover new position equals: 1 @ 1
@@ -185,6 +190,15 @@ RooverTest >> testMoveWhenOverGridWest [
 	r direction: West.
 	r move.
 	self assert: r position equals: 1@1.
+]
+
+{ #category : 'interpreting' }
+RooverTest >> testRooverMoveHistory [
+
+	| r |
+	r := Roover new.
+	r interpretDirection: 'M'.
+	self assert: r history equals: #(1@2)
 ]
 
 { #category : 'RooverAction' }

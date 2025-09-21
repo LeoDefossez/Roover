@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'position',
 		'direction',
-		'gridSize'
+		'gridSize',
+		'history'
 	],
 	#category : 'Roover-roover',
 	#package : 'Roover',
@@ -37,13 +38,20 @@ Roover >> gridSize: aPoint [
 	gridSize := aPoint
 ]
 
+{ #category : 'accessing' }
+Roover >> history [
+	^ history
+]
+
 { #category : 'initialization' }
 Roover >> initialize [
 
 	super initialize.
 	direction := North.
 	position := 1 @ 1.
-	gridSize := 5 @ 5
+	gridSize := 5 @ 5.
+	history := #()
+	
 ]
 
 { #category : 'accessing' }
