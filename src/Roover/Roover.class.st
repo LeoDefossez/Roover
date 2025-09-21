@@ -88,8 +88,10 @@ Roover >> interpretInitialPosition: aString [
 
 { #category : 'accessing' }
 Roover >> move [
-
-	position := self direction move: position
+	|tmp|
+	
+	tmp := self direction move: position.
+	tmp x > 1 & tmp y > 1 ifTrue: [ self position: tmp. ]
 ]
 
 { #category : 'accessing' }

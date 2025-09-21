@@ -32,6 +32,19 @@ RooverTest >> testInterpretDirection [
 ]
 
 { #category : 'interpreting' }
+RooverTest >> testInterpretDirectionWhenGetOverGridBorder [
+
+	| r |
+	r := Roover new.
+	self assert: r position equals: 1@1.
+	self assert: r direction equals: North .
+	r interpretDirection: 'LLM'.
+	self assert: r direction equals: South.
+	self assert: r position equals: 1@1
+	 
+]
+
+{ #category : 'interpreting' }
 RooverTest >> testInterpretDirectionWithMoreSpaces [
 
 	| r |
