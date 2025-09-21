@@ -36,7 +36,7 @@ Roover >> initialize [
 
 	super initialize.
 	direction := North .
-	position := 0@0
+	position := 1@1
 ]
 
 { #category : 'accessing' }
@@ -69,8 +69,8 @@ Roover >> interpretGridSize: aString [
 	| grid |
 	grid := aString splitOn: Character space.
 	grid:= grid reject: [:string | string asInteger isNil].
-	self gridSize: (grid first asInteger + 1) @
-	(grid second asInteger + 1).
+	self gridSize: grid first asInteger @
+	grid second asInteger.
 	
 		
 	

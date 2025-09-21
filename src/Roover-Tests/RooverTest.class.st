@@ -15,9 +15,9 @@ RooverTest >> testDefaultRooverDirectionIsNorth [
 ]
 
 { #category : 'initialization' }
-RooverTest >> testDefaultRooverPositionIsAtZeroZero [
+RooverTest >> testDefaultRooverPositionIsAtOneOne [
 
-	self assert: Roover new position equals: 0 @ 0
+	self assert: Roover new position equals: 1 @ 1
 ]
 
 { #category : 'interpreting' }
@@ -27,7 +27,7 @@ RooverTest >> testInterpretDirection [
 	r := Roover new.
 	r interpretDirection: 'MMRMM'.
 
-	self assert: r position equals: 2@2.
+	self assert: r position equals: 3@3.
 	self assert: r direction equals: East 
 ]
 
@@ -37,7 +37,7 @@ RooverTest >> testInterpretDirectionWithMoreSpaces [
 	| r |
 	r := Roover new.
 	r interpretDirection: ' MMR  MM   '.
-	self assert: r position equals: 2@2.
+	self assert: r position equals: 3@3.
 	self assert: r direction equals: East 
 ]
 
@@ -46,7 +46,7 @@ RooverTest >> testInterpretDirectionWithNoise [
 	| r |
 	r := Roover new.
 	r interpretDirection: ' MMRV MM AD	 BENAD '.
-	self assert: r position equals: 2@2.
+	self assert: r position equals: 3@3.
 	self assert: r direction equals: East 
 ]
 
@@ -69,7 +69,7 @@ RooverTest >> testInterpretGridSize [
 	| r |
 	r := Roover new.
 	r interpretGridSize: '5 5'.
-	self assert: r gridSize equals: 6@6
+	self assert: r gridSize equals: 5@5
 ]
 
 { #category : 'interpreting' }
@@ -78,7 +78,7 @@ RooverTest >> testInterpretGridSizeWithMoreSpaces [
 	| r |
 	r := Roover new.
 	r interpretGridSize: ' 5  5 '.
-	self assert: r gridSize equals: 6@6
+	self assert: r gridSize equals: 5@5
 ]
 
 { #category : 'interpreting' }
@@ -87,7 +87,7 @@ RooverTest >> testInterpretGridSizeWithMoreTab [
 	| r |
 	r := Roover new.
 	r interpretGridSize: ' 5 	 5 '.
-	self assert: r gridSize equals: 6@6
+	self assert: r gridSize equals: 5@5
 ]
 
 { #category : 'interpreting' }
@@ -133,7 +133,7 @@ RooverTest >> testMove [
 	r := Roover new.
 	
 	r move.
-	self assert: r position equals: 0@1.
+	self assert: r position equals: 1@2.
 ]
 
 { #category : 'tests' }
