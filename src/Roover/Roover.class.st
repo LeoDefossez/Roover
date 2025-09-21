@@ -11,6 +11,12 @@ Class {
 	#tag : 'roover'
 }
 
+{ #category : 'as yet unclassified' }
+Roover >> area [
+
+	^ 1 @ 1 rectangle: self gridSize
+]
+
 { #category : 'accessing' }
 Roover >> direction [
 	^ direction
@@ -88,15 +94,22 @@ Roover >> interpretInitialPosition: aString [
 
 { #category : 'accessing' }
 Roover >> move [
-	|tmp|
-	
+
+	| tmp |
 	tmp := self direction move: position.
-	tmp x > 1 & tmp y > 1 ifTrue: [ self position: tmp. ]
+
+
+	(tmp isInsideRectangle: self area) ifTrue: [ self position: tmp ]
 ]
 
 { #category : 'accessing' }
 Roover >> position [
 	^ position
+]
+
+{ #category : 'accessing' }
+Roover >> position: aPoint [ 
+	position := aPoint
 ]
 
 { #category : 'as yet unclassified' }

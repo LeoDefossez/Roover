@@ -32,19 +32,6 @@ RooverTest >> testInterpretDirection [
 ]
 
 { #category : 'interpreting' }
-RooverTest >> testInterpretDirectionWhenGetOverGridBorder [
-
-	| r |
-	r := Roover new.
-	self assert: r position equals: 1@1.
-	self assert: r direction equals: North .
-	r interpretDirection: 'LLM'.
-	self assert: r direction equals: South.
-	self assert: r position equals: 1@1
-	 
-]
-
-{ #category : 'interpreting' }
 RooverTest >> testInterpretDirectionWithMoreSpaces [
 
 	| r |
@@ -139,17 +126,54 @@ RooverTest >> testInterpretInitialPositionWithTab [
 	
 ]
 
-{ #category : 'tests' }
+{ #category : 'RooverAction' }
 RooverTest >> testMove [
-
 	| r |
 	r := Roover new.
-	
 	r move.
 	self assert: r position equals: 1@2.
 ]
 
-{ #category : 'tests' }
+{ #category : 'RooverAction' }
+RooverTest >> testMoveWhenGetOverGridBorder [
+
+	| r |
+	r := Roover new.
+	r direction: South.
+	r move.
+	self assert: r position equals: 1@1
+	 
+]
+
+{ #category : 'RooverAction' }
+RooverTest >> testMoveWhenOverGridNorth [
+	| r |
+	r := Roover new.
+	r gridSize: 5@5.
+	r position: r gridSize.
+	r move.
+	self assert: r position equals: 1@1.
+]
+
+{ #category : 'RooverAction' }
+RooverTest >> testMoveWhenOverGridSouth [
+	| r |
+	r := Roover new.
+	r direction: South.
+	r move.
+	self assert: r position equals: 1@1.
+]
+
+{ #category : 'RooverAction' }
+RooverTest >> testMoveWhenOverGridWest [
+	| r |
+	r := Roover new.
+	r direction: West.
+	r move.
+	self assert: r position equals: 1@1.
+]
+
+{ #category : 'RooverAction' }
 RooverTest >> testRotateLeft [
 |r|
  r := Roover new.
@@ -159,7 +183,7 @@ self assert: r direction equals: West.
 
 ]
 
-{ #category : 'tests' }
+{ #category : 'RooverAction' }
 RooverTest >> testRotateRight [
 
 	| r |
