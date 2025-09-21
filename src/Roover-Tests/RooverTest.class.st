@@ -15,6 +15,12 @@ RooverTest >> testDefaultRooverDirectionIsNorth [
 ]
 
 { #category : 'initialization' }
+RooverTest >> testDefaultRooverGridsizeIsAt5time5 [
+
+	self assert: Roover new gridSize equals: 5@5
+]
+
+{ #category : 'initialization' }
 RooverTest >> testDefaultRooverPositionIsAtOneOne [
 
 	self assert: Roover new position equals: 1 @ 1
@@ -32,6 +38,16 @@ RooverTest >> testInterpretDirection [
 ]
 
 { #category : 'interpreting' }
+RooverTest >> testInterpretDirectionWalkBack [
+
+	| r |
+	r := Roover new.
+	r interpretDirection: 'MMRMMB'.
+	self assert: r position equals: 3 @ 1.
+	self assert: r direction equals: East
+]
+
+{ #category : 'interpreting' }
 RooverTest >> testInterpretDirectionWithMoreSpaces [
 
 	| r |
@@ -45,7 +61,7 @@ RooverTest >> testInterpretDirectionWithMoreSpaces [
 RooverTest >> testInterpretDirectionWithNoise [
 	| r |
 	r := Roover new.
-	r interpretDirection: ' MMRV MM AD	 BENAD '.
+	r interpretDirection: ' MMRV MM AD	 ENAD '.
 	self assert: r position equals: 3@3.
 	self assert: r direction equals: East 
 ]
@@ -135,24 +151,22 @@ RooverTest >> testMove [
 ]
 
 { #category : 'RooverAction' }
-RooverTest >> testMoveWhenGetOverGridBorder [
-
+RooverTest >> testMoveWhenOverGridEast [
 	| r |
 	r := Roover new.
-	r direction: South.
+	r position: r gridSize.
+	r direction: East.
 	r move.
-	self assert: r position equals: 1@1
-	 
+	self assert: r position equals: 5@5.
 ]
 
 { #category : 'RooverAction' }
 RooverTest >> testMoveWhenOverGridNorth [
 	| r |
 	r := Roover new.
-	r gridSize: 5@5.
 	r position: r gridSize.
 	r move.
-	self assert: r position equals: 1@1.
+	self assert: r position equals: 5@5.
 ]
 
 { #category : 'RooverAction' }

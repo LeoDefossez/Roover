@@ -12,6 +12,12 @@ EastTest >> testEastMove [
 ]
 
 { #category : 'tests' }
+EastTest >> testOposite [
+
+	self assert: East opposite equals: West
+]
+
+{ #category : 'tests' }
 EastTest >> testRotateLeft [
 
 	self assert: East  rotateLeft equals: North 

@@ -22,3 +22,9 @@ NorthTest >> testNorthTurnRight [
 
 	self assert: North  rotateRight equals: East 
 ]
+
+{ #category : 'moveTest' }
+NorthTest >> testOposite [
+
+	self assert: North opposite equals: South
+]

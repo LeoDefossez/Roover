@@ -6,6 +6,12 @@ Class {
 	#tag : 'direction'
 }
 
+{ #category : 'tests' }
+SouthTest >> testOposite [
+
+	self assert: South opposite equals: North
+]
+
 { #category : 'moveTest' }
 SouthTest >> testSouthMove [
 
