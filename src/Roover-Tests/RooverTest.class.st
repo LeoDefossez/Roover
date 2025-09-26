@@ -85,6 +85,17 @@ RMRM'.
 ]
 
 { #category : 'interpreting' }
+RooverTest >> testInterpretFullCommandWithHistory [
+
+	| r |
+	r := Roover new.
+	self assert: (r interpretFullCommand: '5 5
+1 2 N 
+RMM
+C') equals: '(1 2) (2 2) (3 2)'.
+]
+
+{ #category : 'interpreting' }
 RooverTest >> testInterpretGridSize [
 
 	| r |
@@ -109,6 +120,15 @@ RooverTest >> testInterpretGridSizeWithMoreTab [
 	r := Roover new.
 	r interpretGridSize: ' 5 	 5 '.
 	self assert: r gridSize equals: 5@5
+]
+
+{ #category : 'interpreting' }
+RooverTest >> testInterpretHistory [
+
+	| r |
+	r := Roover new.
+	r history: { 1@3 . 2@5}.
+	self assert: (r interpretHistory: 'C') equals:  '(1 3) (2 5)'
 ]
 
 { #category : 'interpreting' }

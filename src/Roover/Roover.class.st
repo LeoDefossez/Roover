@@ -43,6 +43,11 @@ Roover >> history [
 	^ history
 ]
 
+{ #category : 'accessing' }
+Roover >> history: aCollection [ 
+	history := aCollection
+]
+
 { #category : 'initialization' }
 Roover >> initialize [
 
@@ -51,7 +56,6 @@ Roover >> initialize [
 	position := 1 @ 1.
 	gridSize := 5 @ 5.
 	history := OrderedCollection new.
-	
 ]
 
 { #category : 'accessing' }
@@ -77,7 +81,8 @@ Roover >> interpretFullCommand: aString [
 	self interpretGridSize: temp first.
 
 	self interpretInitialPosition: temp second.
-	self interpretDirection: temp third
+	self interpretDirection: temp third.
+	temp size = 4 ifTrue: [ ^self interpretHistory: temp fourth ].
 ]
 
 { #category : 'accessing' }
@@ -90,13 +95,20 @@ Roover >> interpretGridSize: aString [
 ]
 
 { #category : 'accessing' }
+Roover >> interpretHistory: aString [ 
+	aString do:[:letter | letter = $C ifTrue:[ ^ self printHistory ] ].
+	^ ''
+]
+
+{ #category : 'accessing' }
 Roover >> interpretInitialPosition: aString [
 
 	| cmd |
 	cmd := aString splitOn: Character space.
 	cmd := cmd reject: [ :string | string isEmpty or: [ string first = Character tab ] ].
 	position := cmd first asInteger @ cmd second asInteger.
-	direction := Direction fromChar: cmd third
+	direction := Direction fromChar: cmd third.
+	history add: position
 ]
 
 { #category : 'accessing' }
@@ -131,6 +143,11 @@ Roover >> position [
 { #category : 'accessing' }
 Roover >> position: aPoint [ 
 	position := aPoint
+]
+
+{ #category : 'accessing' }
+Roover >> printHistory [
+	^ (self history collect:[:point | '(', point x asString , ' ', point y asString, ')' ]) joinUsing: ' '.
 ]
 
 { #category : 'as yet unclassified' }
