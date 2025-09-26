@@ -114,8 +114,14 @@ Roover >> interpretInitialPosition: aString [
 { #category : 'accessing' }
 Roover >> move [
 
+	self move: direction.
+]
+
+{ #category : 'accessing' }
+Roover >> move: aDirection [
+
 	| tmp |
-	tmp := self direction move: position.
+	tmp := aDirection move: position.
 
 
 	(tmp isInsideRectangle: self area) ifFalse: [ ^ self ].
@@ -126,13 +132,9 @@ Roover >> move [
 { #category : 'accessing' }
 Roover >> moveBack [
 
-	| tmp |
-	tmp := self direction opposite move: position.
+	
+	self move: direction opposite.
 
-
-	(tmp isInsideRectangle: self area) ifFalse: [ ^ self ].
-	position := tmp.
-	history add: position
 ]
 
 { #category : 'accessing' }
