@@ -27,8 +27,9 @@ RooverTest >> testDefaultRooverHasEmptyHistory [
 
 { #category : 'initialization' }
 RooverTest >> testDefaultRooverPositionIsAtOneOne [
-
-	self assert: Roover new position equals: 1 @ 1
+	| r |
+	r:= Roover new.
+	self assert: r position equals:r origin
 ]
 
 { #category : 'interpreting' }
@@ -79,9 +80,20 @@ RooverTest >> testInterpretFullCommand [
 	r interpretFullCommand: '5 5
 1 2 N 
 RMRM'.
-
 	self assert: r position equals: 2@1.
 	self assert: r direction equals: South 
+]
+
+{ #category : 'interpreting' }
+RooverTest >> testInterpretFullCommandWithErrorFiveToS [
+
+	| r exec |
+	r := Roover new.
+	exec := [
+		        r interpretFullCommand: '5 S
+1 2 N 
+RMRM' ].
+	self should: exec raise: Error
 ]
 
 { #category : 'interpreting' }

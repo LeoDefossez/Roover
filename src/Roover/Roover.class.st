@@ -15,7 +15,7 @@ Class {
 { #category : 'as yet unclassified' }
 Roover >> area [
 
-	^ 1 @ 1 rectangle: self gridSize
+	^ self origin rectangle: self gridSize
 ]
 
 { #category : 'accessing' }
@@ -53,7 +53,7 @@ Roover >> initialize [
 
 	super initialize.
 	direction := North.
-	position := 1 @ 1.
+	position := self origin.
 	gridSize := 5 @ 5.
 	history := OrderedCollection new.
 ]
@@ -90,8 +90,9 @@ Roover >> interpretGridSize: aString [
 
 	| grid |
 	grid := aString splitOn: Character space.
-	grid := grid reject: [ :string | string asInteger isNil ].
-	self gridSize: grid first asInteger @ grid second asInteger
+	grid := grid collect: [ :string | string asInteger ] thenReject:[:val | val isNil].
+	grid size = 2 ifFalse:[Error signal:'Wrong interpretation in grid size check the roover"s commands']. 
+	self gridSize: grid first @ grid second
 ]
 
 { #category : 'accessing' }
@@ -135,6 +136,11 @@ Roover >> moveBack [
 	
 	self move: direction opposite.
 
+]
+
+{ #category : 'accessing' }
+Roover >> origin [
+	^1 @ 1
 ]
 
 { #category : 'accessing' }
