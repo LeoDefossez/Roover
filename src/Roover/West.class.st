@@ -18,7 +18,7 @@ West class >> opposite [
 
 { #category : 'comparing' }
 West class >> rotateLeft [
-	^ South.
+	^ South. 
 ]
 
 { #category : 'comparing' }
