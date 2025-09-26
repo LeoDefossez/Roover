@@ -149,7 +149,17 @@ Roover >> position: aPoint [
 
 { #category : 'accessing' }
 Roover >> printHistory [
-	^ (self history collect:[:point | '(', point x asString , ' ', point y asString, ')' ]) joinUsing: ' '.
+
+	^ String streamContents: [:s | 
+		self history 
+			do: [ :each | s nextPut: $(;
+							print: each x;
+							space;
+							print: each y;
+							nextPut: $) ]
+			separatedBy: [ s space ]
+		]
+	
 ]
 
 { #category : 'as yet unclassified' }
